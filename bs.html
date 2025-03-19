@@ -184,10 +184,10 @@
       <div class="column">
         <h3 id="playerAHeader">玩家 A</h3>
         <h4>發球方式</h4>
-        <button class="serve-button" data-player="playerA" onclick="setServe('playerA', '正手高遠發球')">正手高遠發球</button>
-        <button class="serve-button" data-player="playerA" onclick="setServe('playerA', '正手短發球')">正手短發球</button>
         <button class="serve-button" data-player="playerA" onclick="setServe('playerA', '反手短發球')">反手短發球</button>
         <button class="serve-button" data-player="playerA" onclick="setServe('playerA', '反手平快發球(偷後場)')">反手平快發球(偷後場)</button>
+        <button class="serve-button" data-player="playerA" onclick="setServe('playerA', '正手高遠發球')">正手高遠發球</button>
+        <button class="serve-button" data-player="playerA" onclick="setServe('playerA', '正手短發球')">正手短發球</button>
 
         <h4>擊球方式</h4>
         <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '高球')">高球</button>
@@ -195,32 +195,33 @@
         <button class="action-button" data-player="playerA" onclick="showDropShotOptions('playerA')">吊球</button>
         <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '放網')">放網</button>
         <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '勾對角')">勾對角</button>
-        <button class="action-button" data-player="playerA" onclick="showSliceShotOptions('playerA')">滑拍</button>
+        <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '撲網')">撲網</button>
+        <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '擋網')">擋網</button>
+        <button class="action-button" data-player="playerA" onclick="showSliceShotOptions('playerA')">劈球</button>
         <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '挑球')">挑球</button>
         <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '平抽')">平抽</button>
         <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '推球')">推球</button>
         <div class="kill-shot-options" id="killShotOptionsA">
-          <button class="kill-shot-button" onclick="recordShot('playerA', '正手殺球')">正手殺球</button>
-          <button class="kill-shot-button" onclick="recordShot('playerA', '反手殺球')">反手殺球</button>
-          <button class="kill-shot-button" onclick="recordShot('playerA', '跳殺')">跳殺</button>
+          <button class="kill-shot-button" onclick="recordShot('playerA', '殺直線')">殺直線</button>
+          <button class="kill-shot-button" onclick="recordShot('playerA', '殺斜線')">殺斜線</button>
         </div>
         <div class="drop-shot-options" id="dropShotOptionsA">
           <button class="drop-shot-button" onclick="recordShot('playerA', '吊直線')">吊直線</button>
           <button class="drop-shot-button" onclick="recordShot('playerA', '吊斜線')">吊斜線</button>
         </div>
         <div class="slice-shot-options" id="sliceShotOptionsA">
-          <button class="slice-shot-button" onclick="recordShot('playerA', '滑直線')">滑直線</button>
-          <button class="slice-shot-button" onclick="recordShot('playerA', '滑斜線')">滑斜線</button>
+          <button class="slice-shot-button" onclick="recordShot('playerA', '劈直線')">劈直線</button>
+          <button class="slice-shot-button" onclick="recordShot('playerA', '劈斜線')">劈斜線</button>
         </div>
       </div>
 
       <div class="column">
         <h3 id="playerBHeader">玩家 B</h3>
         <h4>發球方式</h4>
-        <button class="serve-button" data-player="playerB" onclick="setServe('playerB', '正手高遠發球')">正手高遠發球</button>
-        <button class="serve-button" data-player="playerB" onclick="setServe('playerB', '正手短發球')">正手短發球</button>
         <button class="serve-button" data-player="playerB" onclick="setServe('playerB', '反手短發球')">反手短發球</button>
         <button class="serve-button" data-player="playerB" onclick="setServe('playerB', '反手平快發球(偷後場)')">反手平快發球(偷後場)</button>
+        <button class="serve-button" data-player="playerB" onclick="setServe('playerB', '正手高遠發球')">正手高遠發球</button>
+        <button class="serve-button" data-player="playerB" onclick="setServe('playerB', '正手短發球')">正手短發球</button>
 
         <h4>擊球方式</h4>
         <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '高球')">高球</button>
@@ -228,22 +229,23 @@
         <button class="action-button" data-player="playerB" onclick="showDropShotOptions('playerB')">吊球</button>
         <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '放網')">放網</button>
         <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '勾對角')">勾對角</button>
-        <button class="action-button" data-player="playerB" onclick="showSliceShotOptions('playerB')">滑拍</button>
+        <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '撲網')">撲網</button>
+        <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '擋網')">擋網</button>
+        <button class="action-button" data-player="playerB" onclick="showSliceShotOptions('playerB')">劈球</button>
         <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '挑球')">挑球</button>
         <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '平抽')">平抽</button>
         <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '推球')">推球</button>
         <div class="kill-shot-options" id="killShotOptionsB">
-          <button class="kill-shot-button" onclick="recordShot('playerB', '正手殺球')">正手殺球</button>
-          <button class="kill-shot-button" onclick="recordShot('playerB', '反手殺球')">反手殺球</button>
-          <button class="kill-shot-button" onclick="recordShot('playerB', '跳殺')">跳殺</button>
+          <button class="kill-shot-button" onclick="recordShot('playerB', '殺直線')">殺直線</button>
+          <button class="kill-shot-button" onclick="recordShot('playerB', '殺斜線')">殺斜線</button>
         </div>
         <div class="drop-shot-options" id="dropShotOptionsB">
           <button class="drop-shot-button" onclick="recordShot('playerB', '吊直線')">吊直線</button>
           <button class="drop-shot-button" onclick="recordShot('playerB', '吊斜線')">吊斜線</button>
         </div>
         <div class="slice-shot-options" id="sliceShotOptionsB">
-          <button class="slice-shot-button" onclick="recordShot('playerB', '滑直線')">滑直線</button>
-          <button class="slice-shot-button" onclick="recordShot('playerB', '滑斜線')">滑斜線</button>
+          <button class="slice-shot-button" onclick="recordShot('playerB', '劈直線')">劈直線</button>
+          <button class="slice-shot-button" onclick="recordShot('playerB', '劈斜線')">劈斜線</button>
         </div>
       </div>
     </div>
@@ -301,10 +303,10 @@
 
     // 玩家 A 統計變數
     let serveStatsA = {
-      "正手高遠發球": 0,
-      "正手短發球": 0,
       "反手短發球": 0,
-      "反手平快發球(偷後場)": 0
+      "反手平快發球(偷後場)": 0,
+      "正手高遠發球": 0,
+      "正手短發球": 0
     };
     let shotStatsA = {
       "高球": 0,
@@ -312,23 +314,24 @@
       "吊球": 0,
       "放網": 0,
       "勾對角": 0,
-      "滑拍": 0,
+      "撲網": 0,
+      "擋網": 0,
+      "劈球": 0,
       "挑球": 0,
       "平抽": 0,
       "推球": 0
     };
     let killShotDetailsA = {
-      "正手殺球": 0,
-      "反手殺球": 0,
-      "跳殺": 0
+      "殺直線": 0,
+      "殺斜線": 0
     };
     let dropShotDetailsA = {
       "吊直線": 0,
       "吊斜線": 0
     };
     let sliceShotDetailsA = {
-      "滑直線": 0,
-      "滑斜線": 0
+      "劈直線": 0,
+      "劈斜線": 0
     };
     let scoreReasonStatsA = {
       "主動得分(殺吊)": 0,
@@ -340,10 +343,10 @@
 
     // 玩家 B 統計變數
     let serveStatsB = {
-      "正手高遠發球": 0,
-      "正手短發球": 0,
       "反手短發球": 0,
-      "反手平快發球(偷後場)": 0
+      "反手平快發球(偷後場)": 0,
+      "正手高遠發球": 0,
+      "正手短發球": 0
     };
     let shotStatsB = {
       "高球": 0,
@@ -351,23 +354,24 @@
       "吊球": 0,
       "放網": 0,
       "勾對角": 0,
-      "滑拍": 0,
+      "撲網": 0,
+      "擋網": 0,
+      "劈球": 0,
       "挑球": 0,
       "平抽": 0,
       "推球": 0
     };
     let killShotDetailsB = {
-      "正手殺球": 0,
-      "反手殺球": 0,
-      "跳殺": 0
+      "殺直線": 0,
+      "殺斜線": 0
     };
     let dropShotDetailsB = {
       "吊直線": 0,
       "吊斜線": 0
     };
     let sliceShotDetailsB = {
-      "滑直線": 0,
-      "滑斜線": 0
+      "劈直線": 0,
+      "劈斜線": 0
     };
     let scoreReasonStatsB = {
       "主動得分(殺吊)": 0,
@@ -440,7 +444,7 @@
       optionsDiv.style.display = optionsDiv.style.display === 'block' ? 'none' : 'block';
     }
 
-    // 顯示滑拍子選項
+    // 顯示劈球子選項
     function showSliceShotOptions(player) {
       if (gameEnded) {
         alert("比賽已結束，請重新開始！");
@@ -697,7 +701,7 @@
       logWithTimestamp.push(`${getTimestamp()} ${shotMessage}`);
       // 記錄擊球方式統計
       if (player === "playerA") {
-        if (shotType === "正手殺球" || shotType === "反手殺球" || shotType === "跳殺") {
+        if (shotType === "殺直線" || shotType === "殺斜線") {
           shotStatsA["殺球"]++;
           killShotDetailsA[shotType]++;
           totalShotsA++;
@@ -707,8 +711,8 @@
           dropShotDetailsA[shotType]++;
           totalShotsA++;
           document.getElementById(`dropShotOptions${player === 'playerA' ? 'A' : 'B'}`).style.display = 'none';
-        } else if (shotType === "滑直線" || shotType === "滑斜線") {
-          shotStatsA["滑拍"]++;
+        } else if (shotType === "劈直線" || shotType === "劈斜線") {
+          shotStatsA["劈球"]++;
           sliceShotDetailsA[shotType]++;
           totalShotsA++;
           document.getElementById(`sliceShotOptions${player === 'playerA' ? 'A' : 'B'}`).style.display = 'none';
@@ -719,7 +723,7 @@
           hideAllSubOptions(player);
         }
       } else {
-        if (shotType === "正手殺球" || shotType === "反手殺球" || shotType === "跳殺") {
+        if (shotType === "殺直線" || shotType === "殺斜線") {
           shotStatsB["殺球"]++;
           killShotDetailsB[shotType]++;
           totalShotsB++;
@@ -729,8 +733,8 @@
           dropShotDetailsB[shotType]++;
           totalShotsB++;
           document.getElementById(`dropShotOptions${player === 'playerA' ? 'A' : 'B'}`).style.display = 'none';
-        } else if (shotType === "滑直線" || shotType === "滑斜線") {
-          shotStatsB["滑拍"]++;
+        } else if (shotType === "劈直線" || shotType === "劈斜線") {
+          shotStatsB["劈球"]++;
           sliceShotDetailsB[shotType]++;
           totalShotsB++;
           document.getElementById(`sliceShotOptions${player === 'playerA' ? 'A' : 'B'}`).style.display = 'none';
@@ -861,7 +865,8 @@
       // 玩家 A 統計
       statsLog += `<h5>${playerAName} 發球方式百分比</h5>`;
       if (totalServesA > 0) {
-        for (let serveType in serveStatsA) {
+        const serveOrder = ["反手短發球", "反手平快發球(偷後場)", "正手高遠發球", "正手短發球"];
+        for (let serveType of serveOrder) {
           const percentage = ((serveStatsA[serveType] / totalServesA) * 100).toFixed(2);
           statsLog += `${serveType}: ${serveStatsA[serveType]} 次 (${percentage}%)<br>`;
         }
@@ -871,7 +876,7 @@
 
       statsLog += `<h5>${playerAName} 擊球方式百分比</h5>`;
       if (totalShotsA > 0) {
-        const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "滑拍", "挑球", "平抽", "推球"];
+        const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "撲網", "擋網", "劈球", "挑球", "平抽", "推球"];
         for (let shotType of shotOrder) {
           const percentage = ((shotStatsA[shotType] / totalShotsA) * 100).toFixed(2);
           statsLog += `${shotType}: ${shotStatsA[shotType]} 次 (${percentage}%)<br>`;
@@ -893,7 +898,7 @@
               }
             }
           }
-          if (shotType === "滑拍" && shotStatsA[shotType] > 0) {
+          if (shotType === "劈球" && shotStatsA[shotType] > 0) {
             statsLog += "詳細：<br>";
             for (let detail in sliceShotDetailsA) {
               if (sliceShotDetailsA[detail] > 0) {
@@ -920,7 +925,8 @@
       // 玩家 B 統計
       statsLog += `<h5>${playerBName} 發球方式百分比</h5>`;
       if (totalServesB > 0) {
-        for (let serveType in serveStatsB) {
+        const serveOrder = ["反手短發球", "反手平快發球(偷後場)", "正手高遠發球", "正手短發球"];
+        for (let serveType of serveOrder) {
           const percentage = ((serveStatsB[serveType] / totalServesB) * 100).toFixed(2);
           statsLog += `${serveType}: ${serveStatsB[serveType]} 次 (${percentage}%)<br>`;
         }
@@ -930,7 +936,7 @@
 
       statsLog += `<h5>${playerBName} 擊球方式百分比</h5>`;
       if (totalShotsB > 0) {
-        const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "滑拍", "挑球", "平抽", "推球"];
+        const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "撲網", "擋網", "劈球", "挑球", "平抽", "推球"];
         for (let shotType of shotOrder) {
           const percentage = ((shotStatsB[shotType] / totalShotsB) * 100).toFixed(2);
           statsLog += `${shotType}: ${shotStatsB[shotType]} 次 (${percentage}%)<br>`;
@@ -952,7 +958,7 @@
               }
             }
           }
-          if (shotType === "滑拍" && shotStatsB[shotType] > 0) {
+          if (shotType === "劈球" && shotStatsB[shotType] > 0) {
             statsLog += "詳細：<br>";
             for (let detail in sliceShotDetailsB) {
               if (sliceShotDetailsB[detail] > 0) {
@@ -1008,7 +1014,8 @@
 
       // 發球方式統計
       csvContent += `發球方式統計\n`;
-      for (let serveType in serveStatsA) {
+      const serveOrder = ["反手短發球", "反手平快發球(偷後場)", "正手高遠發球", "正手短發球"];
+      for (let serveType of serveOrder) {
         const percentageA = totalServesA > 0 ? ((serveStatsA[serveType] / totalServesA) * 100).toFixed(2) : "0.00";
         const percentageB = totalServesB > 0 ? ((serveStatsB[serveType] / totalServesB) * 100).toFixed(2) : "0.00";
         csvContent += `發球方式,${serveType},${serveStatsA[serveType]},${percentageA}%,${serveStatsB[serveType]},${percentageB}%\n`;
@@ -1016,7 +1023,7 @@
 
       // 擊球方式統計
       csvContent += `\n擊球方式統計\n`;
-      const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "滑拍", "挑球", "平抽", "推球"];
+      const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "撲網", "擋網", "劈球", "挑球", "平抽", "推球"];
       for (let shotType of shotOrder) {
         const percentageA = totalShotsA > 0 ? ((shotStatsA[shotType] / totalShotsA) * 100).toFixed(2) : "0.00";
         const percentageB = totalShotsB > 0 ? ((shotStatsB[shotType] / totalShotsB) * 100).toFixed(2) : "0.00";
@@ -1035,7 +1042,7 @@
             csvContent += `擊球方式詳細,${detail},${dropShotDetailsA[detail]},${detailPercentageA}%,${dropShotDetailsB[detail]},${detailPercentageB}%\n`;
           }
         }
-        if (shotType === "滑拍") {
+        if (shotType === "劈球") {
           for (let detail in sliceShotDetailsA) {
             const detailPercentageA = shotStatsA[shotType] > 0 ? ((sliceShotDetailsA[detail] / shotStatsA[shotType]) * 100).toFixed(2) : "0.00";
             const detailPercentageB = shotStatsB[shotType] > 0 ? ((sliceShotDetailsB[detail] / shotStatsB[shotType]) * 100).toFixed(2) : "0.00";
