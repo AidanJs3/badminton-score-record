@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>羽毛球比賽記錄</title>
+  <title>羽毛球分數記錄統計</title>
   <style>
     body { 
       font-family: Arial, sans-serif; 
@@ -19,10 +19,17 @@
     h3 { 
       font-size: 1.2em; 
       margin: 8px 0; 
+      display: inline-block; 
     }
     h4 { 
       font-size: 1em; 
       margin: 5px 0; 
+    }
+    .server-info { 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      gap: 20px; 
     }
     .button-group { 
       display: flex; 
@@ -125,6 +132,7 @@
       h2 { font-size: 1.3em; }
       h3 { font-size: 1em; }
       h4 { font-size: 0.9em; }
+      .server-info { flex-direction: column; gap: 5px; }
       .column { width: 48%; margin: 0 1%; }
       .action-button, .serve-button, .score-button, .undo-button, 
       .kill-shot-button, .drop-shot-button, .slice-shot-button, .start-button { 
@@ -157,7 +165,7 @@
   </style>
 </head>
 <body>
-  <h2>羽毛球比賽記錄</h2>
+  <h2>羽毛球分數記錄統計</h2>
 
   <!-- 玩家名字輸入區域 -->
   <div id="playerInputContainer" class="player-input-container">
@@ -179,8 +187,10 @@
       <span id="playerBDisplay">玩家 B</span> 得分：<span id="scoreB">0</span>
     </div>
 
-    <h3>當前發球者：<span id="currentServer">請選擇</span></h3>
-    <h3>發球方式：<span id="currentServeType">未選擇</span></h3>
+    <div class="server-info">
+      <h3>當前發球者：<span id="currentServer">請選擇</span></h3>
+      <h3>發球方式：<span id="currentServeType">未選擇</span></h3>
+    </div>
 
     <div class="button-group">
       <div class="column">
@@ -192,13 +202,15 @@
         <button class="serve-button" data-player="playerA" onclick="setServe('playerA', '反手平快發球(偷後場)')">反手平快發球(偷後場)</button>
 
         <h4>擊球方式</h4>
+        <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '高球')">高球</button>
         <button class="action-button" data-player="playerA" onclick="showKillShotOptions('playerA')">殺球</button>
         <button class="action-button" data-player="playerA" onclick="showDropShotOptions('playerA')">吊球</button>
-        <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '平抽')">平抽</button>
-        <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '挑球')">挑球</button>
         <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '放網')">放網</button>
-        <button class="action-button" data-player="playerA" onclick="showSliceShotOptions('playerA')">滑拍</button>
         <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '勾對角')">勾對角</button>
+        <button class="action-button" data-player="playerA" onclick="showSliceShotOptions('playerA')">滑拍</button>
+        <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '挑球')">挑球</button>
+        <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '平抽')">平抽</button>
+        <button class="action-button" data-player="playerA" onclick="recordShot('playerA', '推球')">推球</button>
         <div class="kill-shot-options" id="killShotOptionsA">
           <button class="kill-shot-button" onclick="recordShot('playerA', '正手殺球')">正手殺球</button>
           <button class="kill-shot-button" onclick="recordShot('playerA', '反手殺球')">反手殺球</button>
@@ -223,13 +235,15 @@
         <button class="serve-button" data-player="playerB" onclick="setServe('playerB', '反手平快發球(偷後場)')">反手平快發球(偷後場)</button>
 
         <h4>擊球方式</h4>
+        <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '高球')">高球</button>
         <button class="action-button" data-player="playerB" onclick="showKillShotOptions('playerB')">殺球</button>
         <button class="action-button" data-player="playerB" onclick="showDropShotOptions('playerB')">吊球</button>
-        <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '平抽')">平抽</button>
-        <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '挑球')">挑球</button>
         <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '放網')">放網</button>
-        <button class="action-button" data-player="playerB" onclick="showSliceShotOptions('playerB')">滑拍</button>
         <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '勾對角')">勾對角</button>
+        <button class="action-button" data-player="playerB" onclick="showSliceShotOptions('playerB')">滑拍</button>
+        <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '挑球')">挑球</button>
+        <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '平抽')">平抽</button>
+        <button class="action-button" data-player="playerB" onclick="recordShot('playerB', '推球')">推球</button>
         <div class="kill-shot-options" id="killShotOptionsB">
           <button class="kill-shot-button" onclick="recordShot('playerB', '正手殺球')">正手殺球</button>
           <button class="kill-shot-button" onclick="recordShot('playerB', '反手殺球')">反手殺球</button>
@@ -286,6 +300,7 @@
             <th>擊球方式</th>
             <th>落點</th>
             <th>得分</th>
+            <th>擊球次數</th>
           </tr>
         </thead>
         <tbody id="logTableBody"></tbody>
@@ -308,6 +323,8 @@
     let lastShotPlayer = null;
     let isServing = false;
     let ballOnSide = null;
+    let rallyShotCount = 0; // 當前回合擊球次數
+    let rallyShotCounts = []; // 儲存每個回合的擊球次數
 
     // 玩家 A 統計變數
     let serveStatsA = {
@@ -317,13 +334,15 @@
       "反手平快發球(偷後場)": 0
     };
     let shotStatsA = {
+      "高球": 0,
       "殺球": 0,
       "吊球": 0,
-      "滑拍": 0,
-      "平抽": 0,
-      "挑球": 0,
       "放網": 0,
-      "勾對角": 0
+      "勾對角": 0,
+      "滑拍": 0,
+      "挑球": 0,
+      "平抽": 0,
+      "推球": 0
     };
     let killShotDetailsA = {
       "正手殺球": 0,
@@ -366,13 +385,15 @@
       "反手平快發球(偷後場)": 0
     };
     let shotStatsB = {
+      "高球": 0,
       "殺球": 0,
       "吊球": 0,
-      "滑拍": 0,
-      "平抽": 0,
-      "挑球": 0,
       "放網": 0,
-      "勾對角": 0
+      "勾對角": 0,
+      "滑拍": 0,
+      "挑球": 0,
+      "平抽": 0,
+      "推球": 0
     };
     let killShotDetailsB = {
       "正手殺球": 0,
@@ -509,6 +530,8 @@
         lastShotPlayer: lastShotPlayer,
         isServing: isServing,
         ballOnSide: ballOnSide,
+        rallyShotCount: rallyShotCount,
+        rallyShotCounts: [...rallyShotCounts],
         serveStatsA: { ...serveStatsA },
         shotStatsA: { ...shotStatsA },
         killShotDetailsA: { ...killShotDetailsA },
@@ -558,6 +581,8 @@
       lastShotPlayer = lastState.lastShotPlayer;
       isServing = lastState.isServing;
       ballOnSide = lastState.ballOnSide;
+      rallyShotCount = lastState.rallyShotCount;
+      rallyShotCounts = [...lastState.rallyShotCounts];
       serveStatsA = { ...lastState.serveStatsA };
       shotStatsA = { ...lastState.shotStatsA };
       killShotDetailsA = { ...lastState.killShotDetailsA };
@@ -606,7 +631,7 @@
     }
 
     // 新增一行到表格
-    function addTableRow(serve, shot, location, score) {
+    function addTableRow(serve, shot, location, score, shotCount) {
       const tableBody = document.getElementById("logTableBody");
       const newRow = document.createElement("tr");
       newRow.innerHTML = `
@@ -614,6 +639,7 @@
         <td>${shot || "-"}</td>
         <td>${location || "-"}</td>
         <td>${score || "-"}</td>
+        <td>${shotCount !== undefined ? shotCount : "-"}</td>
       `;
       tableBody.appendChild(newRow);
       scrollToBottom();
@@ -680,21 +706,21 @@
         currentServeType = serveType;
         document.getElementById("currentServer").innerText = currentServer;
         document.getElementById("currentServeType").innerText = currentServeType;
-        addTableRow(serveMessage, null, null, null);
+        addTableRow(serveMessage, null, null, null, null);
         logWithTimestamp.push(`${getTimestamp()} ${serveMessage}`);
       } else {
         if (player !== expectedServer) {
           const expectedServerName = expectedServer === "playerA" ? playerAName : playerBName;
           alert(`發球者錯誤！應該由 ${expectedServerName} 發球。`);
           const errorMessage = `提醒：發球者錯誤，應該由 ${expectedServerName} 發球`;
-          addTableRow(errorMessage, null, null, null);
+          addTableRow(errorMessage, null, null, null, null);
           logWithTimestamp.push(`${getTimestamp()} ${errorMessage}`);
         }
         currentServer = playerDisplayName;
         currentServeType = serveType;
         document.getElementById("currentServer").innerText = currentServer;
         document.getElementById("currentServeType").innerText = currentServeType;
-        addTableRow(serveMessage, null, null, null);
+        addTableRow(serveMessage, null, null, null, null);
         logWithTimestamp.push(`${getTimestamp()} ${serveMessage}`);
       }
       if (player === "playerA") {
@@ -711,6 +737,7 @@
       lastShotPlayer = null;
       isServing = true;
       ballOnSide = player === "playerA" ? "playerB" : "playerA";
+      rallyShotCount = 1; // 發球計為第一次擊球
       updateButtonState();
     }
 
@@ -725,9 +752,10 @@
       const shotMessage = `${playerDisplayName} ${shotType}`;
       lastShotPlayer = player;
       isServing = false;
+      rallyShotCount++; // 每次擊球增加計數
       // 檢查是否選擇了落點，若未選擇則留空白
       const displayLocation = currentLocation === "未選擇" ? "-" : currentLocation;
-      addTableRow(null, shotMessage, displayLocation, null);
+      addTableRow(null, shotMessage, displayLocation, null, null);
       logWithTimestamp.push(`${getTimestamp()} ${shotMessage}`);
       if (currentLocation !== "未選擇") {
         logWithTimestamp.push(`${getTimestamp()} 落點：${currentLocation}`);
@@ -819,7 +847,7 @@
         if (scoreA + 1 === 30) {
           gameEnded = true;
           const endMessage = `比賽結束！${playerAName} 獲勝，比分：${scoreA + 1} - ${scoreB}`;
-          addTableRow(endMessage, null, null, null);
+          addTableRow(endMessage, null, null, null, null);
           logWithTimestamp.push(`${getTimestamp()} ${endMessage}`);
           showFinalLog();
           updateButtonState();
@@ -827,7 +855,7 @@
         } else if (scoreB + 1 === 30) {
           gameEnded = true;
           const endMessage = `比賽結束！${playerBName} 獲勝，比分：${scoreA} - ${scoreB + 1}`;
-          addTableRow(endMessage, null, null, null);
+          addTableRow(endMessage, null, null, null, null);
           logWithTimestamp.push(`${getTimestamp()} ${endMessage}`);
           showFinalLog();
           updateButtonState();
@@ -840,7 +868,7 @@
         if (scoreA - scoreB >= 2) {
           gameEnded = true;
           const endMessage = `比賽結束！${playerAName} 獲勝，比分：${scoreA} - ${scoreB}`;
-          addTableRow(endMessage, null, null, null);
+          addTableRow(endMessage, null, null, null, null);
           logWithTimestamp.push(`${getTimestamp()} ${endMessage}`);
           showFinalLog();
           updateButtonState();
@@ -848,7 +876,7 @@
         } else if (scoreB - scoreA >= 2) {
           gameEnded = true;
           const endMessage = `比賽結束！${playerBName} 獲勝，比分：${scoreA} - ${scoreB}`;
-          addTableRow(endMessage, null, null, null);
+          addTableRow(endMessage, null, null, null, null);
           logWithTimestamp.push(`${getTimestamp()} ${endMessage}`);
           showFinalLog();
           updateButtonState();
@@ -860,7 +888,7 @@
       if (scoreA >= 21 && scoreA - scoreB >= 2) {
         gameEnded = true;
         const endMessage = `比賽結束！${playerAName} 獲勝，比分：${scoreA} - ${scoreB}`;
-        addTableRow(endMessage, null, null, null);
+        addTableRow(endMessage, null, null, null, null);
         logWithTimestamp.push(`${getTimestamp()} ${endMessage}`);
         showFinalLog();
         updateButtonState();
@@ -868,7 +896,7 @@
       } else if (scoreB >= 21 && scoreB - scoreA >= 2) {
         gameEnded = true;
         const endMessage = `比賽結束！${playerBName} 獲勝，比分：${scoreA} - ${scoreB}`;
-        addTableRow(endMessage, null, null, null);
+        addTableRow(endMessage, null, null, null, null);
         logWithTimestamp.push(`${getTimestamp()} ${endMessage}`);
         showFinalLog();
         updateButtonState();
@@ -900,8 +928,10 @@
         scoreReasonStatsB[reason]++;
         totalScoresB++;
       }
-      addTableRow(null, null, null, scoreMessage);
-      logWithTimestamp.push(`${getTimestamp()} ${scoreMessage}`);
+      // 記錄當前回合的擊球次數
+      rallyShotCounts.push(rallyShotCount);
+      addTableRow(null, null, null, scoreMessage, rallyShotCount);
+      logWithTimestamp.push(`${getTimestamp()} ${scoreMessage}，本回合擊球次數：${rallyShotCount}`);
       currentLocation = "未選擇";
       currentServeType = "未選擇";
       document.getElementById("currentServeType").innerText = currentServeType;
@@ -910,6 +940,7 @@
       lastShotPlayer = null;
       isServing = false;
       ballOnSide = null;
+      rallyShotCount = 0; // 重置回合擊球次數
       // 隱藏得分原因子選項
       document.getElementById("scoreReasonOptionsA").style.display = 'none';
       document.getElementById("scoreReasonOptionsB").style.display = 'none';
@@ -936,7 +967,8 @@
 
       statsLog += `<h5>${playerAName} 擊球方式百分比</h5>`;
       if (totalShotsA > 0) {
-        for (let shotType in shotStatsA) {
+        const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "滑拍", "挑球", "平抽", "推球"];
+        for (let shotType of shotOrder) {
           const percentage = ((shotStatsA[shotType] / totalShotsA) * 100).toFixed(2);
           statsLog += `${shotType}: ${shotStatsA[shotType]} 次 (${percentage}%)<br>`;
           if (shotType === "殺球" && shotStatsA[shotType] > 0) {
@@ -944,7 +976,7 @@
             for (let detail in killShotDetailsA) {
               if (killShotDetailsA[detail] > 0) {
                 const detailPercentage = ((killShotDetailsA[detail] / shotStatsA[shotType]) * 100).toFixed(2);
-                statsLog += `  ${detail}: ${killShotDetailsA[detail]} 次 (${detailPercentage}%)<br>`;
+                statsLog += `  ${detail}: ${killShotDetailsA[detail]} 次 (${detailPercentage}%)<br>`;
               }
             }
           }
@@ -953,7 +985,7 @@
             for (let detail in dropShotDetailsA) {
               if (dropShotDetailsA[detail] > 0) {
                 const detailPercentage = ((dropShotDetailsA[detail] / shotStatsA[shotType]) * 100).toFixed(2);
-                statsLog += `  ${detail}: ${dropShotDetailsA[detail]} 次 (${detailPercentage}%)<br>`;
+                statsLog += `  ${detail}: ${dropShotDetailsA[detail]} 次 (${detailPercentage}%)<br>`;
               }
             }
           }
@@ -962,7 +994,7 @@
             for (let detail in sliceShotDetailsA) {
               if (sliceShotDetailsA[detail] > 0) {
                 const detailPercentage = ((sliceShotDetailsA[detail] / shotStatsA[shotType]) * 100).toFixed(2);
-                statsLog += `  ${detail}: ${sliceShotDetailsA[detail]} 次 (${detailPercentage}%)<br>`;
+                statsLog += `  ${detail}: ${sliceShotDetailsA[detail]} 次 (${detailPercentage}%)<br>`;
               }
             }
           }
@@ -1004,7 +1036,8 @@
 
       statsLog += `<h5>${playerBName} 擊球方式百分比</h5>`;
       if (totalShotsB > 0) {
-        for (let shotType in shotStatsB) {
+        const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "滑拍", "挑球", "平抽", "推球"];
+        for (let shotType of shotOrder) {
           const percentage = ((shotStatsB[shotType] / totalShotsB) * 100).toFixed(2);
           statsLog += `${shotType}: ${shotStatsB[shotType]} 次 (${percentage}%)<br>`;
           if (shotType === "殺球" && shotStatsB[shotType] > 0) {
@@ -1012,7 +1045,7 @@
             for (let detail in killShotDetailsB) {
               if (killShotDetailsB[detail] > 0) {
                 const detailPercentage = ((killShotDetailsB[detail] / shotStatsB[shotType]) * 100).toFixed(2);
-                statsLog += `  ${detail}: ${killShotDetailsB[detail]} 次 (${detailPercentage}%)<br>`;
+                statsLog += `  ${detail}: ${killShotDetailsB[detail]} 次 (${detailPercentage}%)<br>`;
               }
             }
           }
@@ -1021,7 +1054,7 @@
             for (let detail in dropShotDetailsB) {
               if (dropShotDetailsB[detail] > 0) {
                 const detailPercentage = ((dropShotDetailsB[detail] / shotStatsB[shotType]) * 100).toFixed(2);
-                statsLog += `  ${detail}: ${dropShotDetailsB[detail]} 次 (${detailPercentage}%)<br>`;
+                statsLog += `  ${detail}: ${dropShotDetailsB[detail]} 次 (${detailPercentage}%)<br>`;
               }
             }
           }
@@ -1030,7 +1063,7 @@
             for (let detail in sliceShotDetailsB) {
               if (sliceShotDetailsB[detail] > 0) {
                 const detailPercentage = ((sliceShotDetailsB[detail] / shotStatsB[shotType]) * 100).toFixed(2);
-                statsLog += `  ${detail}: ${sliceShotDetailsB[detail]} 次 (${detailPercentage}%)<br>`;
+                statsLog += `  ${detail}: ${sliceShotDetailsB[detail]} 次 (${detailPercentage}%)<br>`;
               }
             }
           }
@@ -1059,12 +1092,24 @@
         statsLog += "無得分記錄<br>";
       }
 
+      // 擊球次數統計
+      statsLog += `<h5>每回合擊球次數統計</h5>`;
+      if (rallyShotCounts.length > 0) {
+        rallyShotCounts.forEach((count, index) => {
+          statsLog += `回合 ${index + 1}: ${count} 次<br>`;
+        });
+        const averageShots = (rallyShotCounts.reduce((a, b) => a + b, 0) / rallyShotCounts.length).toFixed(2);
+        statsLog += `平均擊球次數: ${averageShots} 次<br>`;
+      } else {
+        statsLog += "無擊球次數記錄<br>";
+      }
+
       // 添加下載按鈕
       statsLog += `<button class="download-button" onclick="downloadStats()">下載統計數據 (CSV)</button>`;
 
       const tableBody = document.getElementById("logTableBody");
       const newRow = document.createElement("tr");
-      newRow.innerHTML = `<td colspan="4"><h4>比賽總記錄（含時間戳）</h4>${finalLog}<br>${statsLog}</td>`;
+      newRow.innerHTML = `<td colspan="5"><h4>比賽總記錄（含時間戳）</h4>${finalLog}<br>${statsLog}</td>`;
       tableBody.appendChild(newRow);
       scrollToBottom();
     }
@@ -1087,7 +1132,8 @@
 
       // 擊球方式統計
       csvContent += `\n擊球方式統計\n`;
-      for (let shotType in shotStatsA) {
+      const shotOrder = ["高球", "殺球", "吊球", "放網", "勾對角", "滑拍", "挑球", "平抽", "推球"];
+      for (let shotType of shotOrder) {
         const percentageA = totalShotsA > 0 ? ((shotStatsA[shotType] / totalShotsA) * 100).toFixed(2) : "0.00";
         const percentageB = totalShotsB > 0 ? ((shotStatsB[shotType] / totalShotsB) * 100).toFixed(2) : "0.00";
         csvContent += `擊球方式,${shotType},${shotStatsA[shotType]},${percentageA}%,${shotStatsB[shotType]},${percentageB}%\n`;
@@ -1130,6 +1176,17 @@
         csvContent += `得分原因,${reason},${scoreReasonStatsA[reason]},${percentageA}%,${scoreReasonStatsB[reason]},${percentageB}%\n`;
       }
 
+      // 擊球次數統計
+      csvContent += `\n每回合擊球次數統計\n`;
+      csvContent += `回合,擊球次數\n`;
+      rallyShotCounts.forEach((count, index) => {
+        csvContent += `回合 ${index + 1},${count}\n`;
+      });
+      if (rallyShotCounts.length > 0) {
+        const averageShots = (rallyShotCounts.reduce((a, b) => a + b, 0) / rallyShotCounts.length).toFixed(2);
+        csvContent += `平均擊球次數,${averageShots}\n`;
+      }
+
       // 比賽記錄
       csvContent += `\n比賽記錄（含時間戳）\n`;
       csvContent += `時間戳,記錄\n`;
@@ -1146,11 +1203,7 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      URL.revokeObjectURL(url);
     }
-
-    // 初始化按鈕狀態
-    updateButtonState();
   </script>
 </body>
 </html>
